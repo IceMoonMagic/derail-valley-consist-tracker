@@ -9,6 +9,16 @@ train.value.new_engine()
 const cut_from = ref<number>(0)
 
 function swap(a: number, b: number): void {
+  if (a == -1) {
+    a = train.value.consists.length - 1
+  } else if (a == train.value.consists.length) {
+    a = 0
+  }
+  if (b == -1) {
+    b = train.value.consists.length - 1
+  } else if (b == train.value.consists.length) {
+    b = 0
+  }
   if (
     a < 0 ||
     b < 0 ||
@@ -36,15 +46,16 @@ function remove(i: number): void {
 </script>
 
 <template>
+  <div class="flex justify-center gap-4">
+    <button @click="train.new_engine">Add Engine</button>
+    <button @click="train.new_consist">Add Order</button>
+  </div>
   <label>
-    | Load Rating: {{ train.total_load_rating.toFixed(2) }}t | Mass:
+    Load Rating: {{ train.total_load_rating.toFixed(2) }}t | Mass:
     {{ train.total_mass.toFixed(2) }}t | Length:
     {{ train.total_length.toFixed(2) }}m | Cars:
-    {{ train.total_cars.toFixed(0) }} |
+    {{ train.total_cars.toFixed(0) }}
   </label>
-  <br />
-  <button @click="train.new_engine">Add Engine</button>
-  <button @click="train.new_consist">Add Order</button>
   <div class="flex flex-wrap justify-center gap-8">
     <template v-for="i in train.consists.length">
       <Engine

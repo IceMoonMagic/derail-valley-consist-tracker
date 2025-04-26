@@ -29,7 +29,7 @@ watch(consist.value, (updated) => {
 </script>
 
 <template>
-  <div class="grid w-[12em] grid-cols-2">
+  <div class="grid h-fit w-[12em] grid-cols-2">
     <input
       :style="`background: ${job_color};`"
       class="col-span-2 text-center text-2xl text-black"
