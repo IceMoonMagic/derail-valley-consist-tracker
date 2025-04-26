@@ -1,29 +1,36 @@
 <script lang="ts" setup>
 import { ref } from "vue"
-import { Train, Consist as ConsistType } from "./train"
+import { Train } from "./train"
 import Consist from "./components/Consist.vue"
 
-const foo = ref<ConsistType>(new ConsistType("hi", 0, 0, 0, "bye"))
-const train = ref<Train>(new Train([foo.value]))
+const train = ref<Train>(new Train([]))
+
+function swap(a: number, b: number): void {
+  if (
+    a < 0 ||
+    b < 0 ||
+    a >= train.value.consists.length ||
+    b >= train.value.consists.length
+  )
+    return
+  const temp = train.value.consists[b]
+  train.value.consists[b] = train.value.consists[a]
+  train.value.consists[a] = temp
+}
+function remove(i: number): void {
+  train.value.consists.splice(i, 1)
+}
 </script>
 
 <template>
-  <Consist v-for="i in train.consists.length" v-model="train.consists[i - 1]" />
+  <button @click="train.new_consist">Add Consist</button>
+  <div class="flex flex-wrap justify-center gap-8">
+    <Consist
+      @delete="remove(i - 1)"
+      @left="swap(i - 1, i - 2)"
+      @right="swap(i - 1, i)"
+      v-for="i in train.consists.length"
+      v-model="train.consists[i - 1]"
+    />
+  </div>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

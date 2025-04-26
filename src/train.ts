@@ -41,4 +41,8 @@ export class Train {
       this.consists = []
     }
   }
+
+  public new_consist(): void {
+    this.consists.push(new Consist("-FH-", 0, 0, 1, "-"))
+  }
 }
