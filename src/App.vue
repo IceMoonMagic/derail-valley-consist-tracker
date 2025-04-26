@@ -58,6 +58,7 @@ function remove(i: number): void {
   </label>
   <div class="flex flex-wrap justify-center gap-8">
     <template v-for="i in train.consists.length">
+      <!-- @vue-ignore -->
       <Engine
         :cut="train.get_cut_from(i - 1, cut_from)"
         @delete="remove(i - 1)"
@@ -67,6 +68,7 @@ function remove(i: number): void {
         v-if="train.consists[i - 1] instanceof EngineType"
         v-model="train.consists[i - 1]"
       />
+      <!-- @vue-ignore -->
       <Consist
         :cut="train.get_cut_from(i - 1, cut_from)"
         @delete="remove(i - 1)"
