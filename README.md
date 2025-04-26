@@ -1,5 +1,7 @@
-# Vue 3 + TypeScript + Vite
+# Derail Valley Consist Tracker
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple tool to help keep track of a train's consists.
+Is there another tool that does this? Maybe, I forgot to look.
+Tool for myself, but figured I'd share.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Engine stats taken from the [Derail Valley Fandom Wiki](https://derailvalley.fandom.com/wiki/).
