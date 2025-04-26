@@ -181,3 +181,104 @@ export function station_color_from_code(code: string): string {
   let station: Station | undefined = STATIONS.find((s) => s.code == code)
   return station?.color || "#FFFFFF"
 }
+
+export interface Locomotive {
+  name: string
+  mass: number
+  length: number
+  load_rating: number
+  color: string
+}
+
+export const LOCOMOTIVES: Map<string, Locomotive> = new Map([
+  [
+    "undefined",
+    {
+      name: "Undefined",
+      mass: 0,
+      length: 0,
+      load_rating: 0,
+      color: "#FFF",
+    },
+  ],
+  [
+    "BE2",
+    {
+      name: "BE2-260 Microshunter",
+      mass: 12,
+      length: 4,
+      load_rating: 100,
+      color: "#d0c86e",
+    },
+  ],
+  [
+    "DE2",
+    {
+      name: "DE2-480 Shunter",
+      mass: 38,
+      length: 7.49,
+      load_rating: 370,
+      color: "#e1dda2",
+    },
+  ],
+  [
+    "DE6",
+    {
+      name: "DE6-860",
+      mass: 125,
+      length: 18.78,
+      load_rating: 1320,
+      color: "#cfa66d",
+    },
+  ],
+  [
+    "DH4",
+    {
+      name: "DH4-670 Diesel Road-Switcher",
+      mass: 80,
+      length: 13,
+      load_rating: 800,
+      color: "#ac665c",
+    },
+  ],
+  [
+    "DM1U",
+    {
+      name: "DM1U Utility Rail Vehicle",
+      mass: 10,
+      length: 14.4,
+      load_rating: 100,
+      color: "#cfc86d",
+    },
+  ],
+  [
+    "DM3",
+    {
+      name: "DM3-540 Diesel Shunter",
+      mass: 52,
+      length: 8.5,
+      load_rating: 960,
+      color: "#70b8cb",
+    },
+  ],
+  [
+    "S060",
+    {
+      name: "S060-440 Steam Shunter",
+      mass: 45,
+      length: 9.1,
+      load_rating: 560,
+      color: "#90d270",
+    },
+  ],
+  [
+    "S282",
+    {
+      name: "S282-730",
+      mass: 175,
+      length: 22,
+      load_rating: 1390,
+      color: "#9fa09a",
+    },
+  ],
+])

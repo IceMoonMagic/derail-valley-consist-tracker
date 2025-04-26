@@ -2,6 +2,7 @@
 import { ref } from "vue"
 import { Train } from "./train"
 import Consist from "./components/Consist.vue"
+import Engine from "./components/Engine.vue"
 
 const train = ref<Train>(new Train([]))
 
@@ -23,14 +24,28 @@ function remove(i: number): void {
 </script>
 
 <template>
-  <button @click="train.new_consist">Add Consist</button>
+  <label>
+    | Load Rating: {{ train.total_load_rating.toFixed(2) }}t | Mass:
+    {{ train.total_mass.toFixed(2) }}t | Length:
+    {{ train.total_length.toFixed(2) }}m | Cars:
+    {{ train.total_cars.toFixed(0) }} |
+  </label>
+  <br />
+  <button @click="train.new_engine">Add Consist</button>
   <div class="flex flex-wrap justify-center gap-8">
-    <Consist
+    <Engine
       @delete="remove(i - 1)"
       @left="swap(i - 1, i - 2)"
       @right="swap(i - 1, i)"
       v-for="i in train.consists.length"
       v-model="train.consists[i - 1]"
     />
+    <!-- <Consist
+      @delete="remove(i - 1)"
+      @left="swap(i - 1, i - 2)"
+      @right="swap(i - 1, i)"
+      v-for="i in train.consists.length"
+      v-model="train.consists[i - 1]"
+    /> -->
   </div>
 </template>
