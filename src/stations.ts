@@ -109,7 +109,7 @@ export const STATIONS: Station[] = [
   },
   {
     name: "Iron Mine West",
-    code: "IME",
+    code: "IMW",
     color: "#9a5947",
     tracks: [],
   },
