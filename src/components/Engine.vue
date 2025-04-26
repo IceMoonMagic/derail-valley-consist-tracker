@@ -6,7 +6,7 @@ const inputs = defineProps({
   cut: Number,
 })
 const engine = defineModel<Engine>({ required: true })
-const emits = defineEmits(["left", "delete", "right"])
+const emits = defineEmits(["left", "delete", "right", "main"])
 
 watch(engine.value, (updated) => {
   console.log(updated)
@@ -52,21 +52,15 @@ watch(engine.value, (updated) => {
     <label :style="`border-color: ${engine.color};`" class="border-l-2">
       Facing
     </label>
-    <input
-      :style="`border-color: ${engine.color}`"
-      class="border-r-2 text-left"
-      type="checkbox"
-      v-model="engine.facing_right"
-    />
+    <span :style="`border-color: ${engine.color}`" class="border-r-2 text-left">
+      <input type="checkbox" v-model="engine.facing_right"
+    /></span>
     <label :style="`border-color: ${engine.color};`" class="border-l-2">
       Running
     </label>
-    <input
-      :style="`border-color: ${engine.color}`"
-      class="border-r-2 text-left"
-      type="checkbox"
-      v-model="engine.running"
-    />
+    <span :style="`border-color: ${engine.color}`" class="border-r-2 text-left">
+      <input type="checkbox" v-model="engine.running" />
+    </span>
     <label :style="`border-color: ${engine.color};`" class="border-l-2">
       Cut
     </label>
@@ -76,6 +70,14 @@ watch(engine.value, (updated) => {
     >
       {{ inputs.cut || 0 }}
     </label>
+
+    <span
+      :style="`border-color: ${engine.color};`"
+      class="col-span-2 w-full border-x-2"
+      ><button :disabled="inputs.cut == 0" @click="emits('main')">
+        Main
+      </button></span
+    >
     <span
       :style="`border-color: ${engine.color}`"
       class="col-span-2 border-2 border-t-0"

@@ -106,4 +106,34 @@ export class Train {
   public new_engine(): void {
     this.consists.push(new Engine("DE2"))
   }
+
+  public get_cut_from(target: number, cut_from: number = 0): number {
+    if (
+      target == cut_from ||
+      target < 0 ||
+      cut_from < 0 ||
+      target >= this.consists.length ||
+      cut_from >= this.consists.length
+    ) {
+      return 0
+    }
+    const work_on =
+      cut_from < target
+        ? this.consists.slice(cut_from, target)
+        : this.consists.slice(target + 1, cut_from + 1)
+    const result = work_on.reduce(
+      (p: number, c: Consist | Engine) =>
+        p + (c instanceof Consist ? c.cars : 1),
+      0,
+    )
+
+    return this.consists[cut_from] instanceof Engine &&
+      this.consists[cut_from].facing_right
+      ? cut_from < target
+        ? result
+        : result * -1
+      : target < cut_from
+        ? result
+        : result * -1
+  }
 }

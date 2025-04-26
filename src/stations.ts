@@ -173,7 +173,7 @@ export function station_color_from_order(order: string): string {
 }
 
 export function station_color_from_track(track: string): string {
-  let match = /(\w\w)-?\w?\d?\w?/.exec(track)
+  let match = /(\w\w\w?)-?\w?\d?\w?/.exec(track)
   return match !== null ? station_color_from_code(match[1]) : "#FFFFFF"
 }
 
