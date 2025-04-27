@@ -64,14 +64,14 @@ export class Train {
 
   get total_mass(): number {
     return this.consists.reduce(
-      (p: number, c: Consist | Engine) => p + c.mass,
+      (p: number, c: Consist | Engine) => p + (c.mass || 0),
       0,
     )
   }
 
   get total_length(): number {
     return this.consists.reduce(
-      (p: number, c: Consist | Engine) => p + c.length,
+      (p: number, c: Consist | Engine) => p + (c.length || 0),
       0,
     )
   }
@@ -79,7 +79,7 @@ export class Train {
   get total_cars(): number {
     return this.consists.reduce(
       (p: number, c: Consist | Engine) =>
-        p + (c instanceof Consist ? c.cars : 1),
+        p + (c instanceof Consist ? c.cars || 0 : 1),
       0,
     )
   }
@@ -87,7 +87,7 @@ export class Train {
   get total_load_rating(): number {
     return this.consists.reduce(
       (p: number, c: Consist | Engine) =>
-        p + (c instanceof Engine && c.running ? c.load_rating : 0),
+        p + (c instanceof Engine && c.running ? c.load_rating || 0 : 0),
       0,
     )
   }
