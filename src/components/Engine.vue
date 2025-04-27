@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { watch } from "vue"
 import { Engine } from "../train"
 
 const inputs = defineProps({
@@ -7,18 +6,13 @@ const inputs = defineProps({
 })
 const engine = defineModel<Engine>({ required: true })
 const emits = defineEmits(["left", "delete", "right", "main"])
-
-watch(engine.value, (updated) => {
-  console.log(updated)
-  updated.loco_code = updated.loco_code.toUpperCase()
-})
 </script>
 
 <template>
   <div class="grid h-fit w-[12em] grid-cols-2">
     <input
       :style="`background: ${engine.color};`"
-      class="col-span-2 text-center text-2xl text-black"
+      class="col-span-2 text-center text-2xl text-black uppercase"
       type="text"
       v-model="engine.loco_code"
     />

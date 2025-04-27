@@ -28,7 +28,7 @@ export class Engine implements Locomotive {
   public running: boolean = true
 
   get locomotive(): Locomotive {
-    let result = LOCOMOTIVES.get(this.loco_code)
+    let result = LOCOMOTIVES.get(this.loco_code.toUpperCase())
     if (result === undefined) {
       result = LOCOMOTIVES.get("undefined")
       if (result === undefined) {

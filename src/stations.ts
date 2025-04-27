@@ -163,7 +163,7 @@ export function job_color_from_order(order: string): string {
 }
 
 export function job_color_from_code(code: string): string {
-  let job: Job | undefined = JOBS.find((s) => s.code == code)
+  let job: Job | undefined = JOBS.find((s) => s.code == code.toUpperCase())
   return job?.color || "#FFFFFF"
 }
 
@@ -178,7 +178,9 @@ export function station_color_from_track(track: string): string {
 }
 
 export function station_color_from_code(code: string): string {
-  let station: Station | undefined = STATIONS.find((s) => s.code == code)
+  let station: Station | undefined = STATIONS.find(
+    (s) => s.code == code.toUpperCase(),
+  )
   return station?.color || "#FFFFFF"
 }
 

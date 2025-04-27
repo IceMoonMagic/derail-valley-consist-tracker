@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, watch } from "vue"
+import { computed } from "vue"
 import { Consist } from "../train"
 import {
   job_color_from_order,
@@ -20,19 +20,13 @@ const origin_color = computed(() =>
 const destination_color = computed(() =>
   station_color_from_track(consist.value.destination),
 )
-
-watch(consist.value, (updated) => {
-  console.log(updated)
-  updated.order = updated.order.toUpperCase()
-  updated.destination = updated.destination.toUpperCase()
-})
 </script>
 
 <template>
   <div class="grid h-fit w-[12em] grid-cols-2">
     <input
       :style="`background: ${job_color};`"
-      class="col-span-2 text-center text-2xl text-black"
+      class="col-span-2 text-center text-2xl text-black uppercase"
       type="text"
       v-model="consist.order"
     />
@@ -68,7 +62,7 @@ watch(consist.value, (updated) => {
     />
     <input
       :style="`background: ${destination_color};`"
-      class="col-span-2 text-center text-2xl text-black"
+      class="col-span-2 text-center text-2xl text-black uppercase"
       type="text"
       v-model="consist.destination"
     />
