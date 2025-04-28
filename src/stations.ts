@@ -234,6 +234,26 @@ export const LOCOMOTIVES: Map<string, Locomotive> = new Map([
     },
   ],
   [
+    "DE6S",
+    {
+      name: "DE6 Slug",
+      mass: 125,
+      length: 16.94,
+      load_rating: 230, // inferred approx from wiki
+      color: "#cfa66d",
+    },
+  ],
+  [
+    "DE6S2",
+    {
+      name: "DE6 Slug",
+      mass: 125,
+      length: 16.94,
+      load_rating: 660, // inferred approx from wiki
+      color: "#cfa66d",
+    },
+  ],
+  [
     "DH4",
     {
       name: "DH4-670 Diesel Road-Switcher",
